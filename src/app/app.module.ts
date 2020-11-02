@@ -14,7 +14,8 @@ import { AuthGuardService } from './auth-guard.service';
 import { CategoryService } from './category.service';
 import { UserService } from './user.service';
 import { AdminAuthGuardService } from './admin-auth-guard.service';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 export const firebase ={
   apiKey: "AIzaSyABJYQs4hUWq-Z8pi9B211DMJS4aWIeSO0",
@@ -42,7 +43,8 @@ export const firebase ={
     AngularFireAuthModule,
     NgbModule,
     FormsModule,
-    CustomFormsModule
+    CustomFormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     AuthService,

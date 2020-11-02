@@ -12,6 +12,8 @@ import { LoginComponent } from './login/login.component';
 import { AdminAuthGuardService } from './admin-auth-guard.service';
 import { AuthGuardService } from './auth-guard.service';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
+import { UpdateProductFormComponent } from './admin/update-product-form/update-product-form.component';
+
 const routes: Routes = [
 // routers for unkown users
 {path:'',component:HomeComponent},
@@ -38,7 +40,7 @@ const routes: Routes = [
 },
 {
   path:'admin/products/:id',
-  component:ProductFormComponent,
+  component:UpdateProductFormComponent,
   canActivate:[AuthGuardService,AdminAuthGuardService]
 },
 {
@@ -49,8 +51,8 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+imports: [RouterModule.forRoot(routes)],
+exports: [RouterModule]
  
 })
 export class AppRoutingModule { }
@@ -64,5 +66,6 @@ export const routingComponents=[
                                 AdminOrderComponent,
                                 AdminProductComponent,
                                 ProductFormComponent,
-                                LoginComponent
+                                LoginComponent,
+                                UpdateProductFormComponent
                               ]

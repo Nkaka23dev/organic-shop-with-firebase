@@ -15,7 +15,10 @@ export class ProductService {
   public getAll():AngularFireList<any>{
     return this.db.list('/products');
   }
-  getProduct(productId){
+  public getProduct(productId){
    return this.db.object('/products/'+productId)
+  }
+  public update(productId,product){
+  this.db.object('/products/'+productId).update(product)
   }
 }

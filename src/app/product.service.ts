@@ -10,7 +10,7 @@ export class ProductService {
   constructor(private db: AngularFireDatabase) { }
 
   public create(product){
-  this.db.list('/products').push(product)
+  return this.db.list('/products').push(product)
   }
   public getAll():AngularFireList<any>{
     return this.db.list('/products');
@@ -19,6 +19,9 @@ export class ProductService {
    return this.db.object('/products/'+productId)
   }
   public update(productId,product){
-  this.db.object('/products/'+productId).update(product)
+  return this.db.object('/products/'+productId).update(product)
+  }
+  public delete(productId){
+  return this.db.object('/products/'+productId).remove()
   }
 }

@@ -10,7 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./update-product-form.component.css']
 })
 export class UpdateProductFormComponent implements OnInit {
-  public product;
+  public product:any={};
   public categories$;
   public id;
   constructor(
@@ -20,12 +20,14 @@ export class UpdateProductFormComponent implements OnInit {
     private router:Router
     ){
     // this.client = db.list('/categories');
-    this.categories$ = this.categoryService.getCategory().snapshotChanges().pipe(
+    this.categories$ = this.categoryService.getCategory()
+     .snapshotChanges().pipe(
       map(res => res.map(c => ({ key: c.payload.key, ...c.payload.val() 
     }))
    ));
    this.id=this.route.snapshot.paramMap.get('id')
-   if (this.id) this.productService.getProduct(this.id).valueChanges().pipe(take(1)).subscribe(
+   if (this.id) this.productService.getProduct(this.id)
+      .valueChanges().pipe(take(1)).subscribe(
      p=>this.product=p
    )
   }
@@ -33,6 +35,12 @@ export class UpdateProductFormComponent implements OnInit {
    if(this.id) this.productService.update(this.id,product)
   // this.productService.create(product) 
   this.router.navigate(['/admin/products'])
+  }
+  public delete(){
+   if(!confirm('Are you sure you want to delete this product')) return;
+    this.productService.delete(this.id);
+    this.router.navigate(['/admin/products']);
+   
   }
  
   ngOnInit(): void {

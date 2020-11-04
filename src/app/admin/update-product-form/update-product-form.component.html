@@ -1,4 +1,3 @@
-
 <div class="row">
     <div class="col-md-6">
 <form #f="ngForm" (ngSubmit)="edit(f.value)">
@@ -29,7 +28,7 @@
 <div class="form-group">
     <label for="category">Category</label>
     <select id="category" type="text" required #category="ngModel"
-     [(ngModel)]="product.category"
+    [(ngModel)]="product.category"
     name="category" class="form-control">
         <option value=""></option>
         <option *ngFor="let cat of categories$ | async" 
@@ -50,7 +49,7 @@
     </div>
 </div>
 <button class="btn btn-primary" type="submit">Edit</button>
-<button (click)="delete()" class="btn btn-danger ml-2" type="button">delete</button>
+<button (click)="delete()" class="btn btn-danger ml-3" type="button">Delete</button>
 </form>
     </div>
     <div class="col-md-6">
